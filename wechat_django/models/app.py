@@ -72,7 +72,7 @@ class WeChatApp(m.Model):
     flags = m.IntegerField(_("flags"), default=0)
 
     ext_info = JSONField(db_column="ext_info", default={})
-    configurations = JSONField(db_column="configurations", default={})
+    configurations = JSONField(db_column="configurations", default=dict)
 
     created_at = m.DateTimeField(_("created at"), auto_now_add=True)
     updated_at = m.DateTimeField(_("updated at"), auto_now=True)

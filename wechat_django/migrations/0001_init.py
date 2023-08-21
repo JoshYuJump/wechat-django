@@ -162,7 +162,7 @@ class Migration(migrations.Migration):
                 ('encoding_aes_key', models.CharField(blank=True, max_length=43, null=True, verbose_name='EncodingAESKey')),
                 ('encoding_mode', models.PositiveSmallIntegerField(choices=[(0, 'PLAIN'), (2, 'SAFE')], default=0, verbose_name='encoding mode')),
                 ('flags', models.IntegerField(default=0, verbose_name='flags')),
-                ('ext_info', models.JSONField(db_column='ext_info', default={})),
+                ('ext_info', models.JSONField(db_column='ext_info', default=dict)),
                 ('configurations', models.JSONField(db_column='configurations', default={})),
                 ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='created at')),
                 ('updated_at', models.DateTimeField(auto_now=True, verbose_name='updated at')),

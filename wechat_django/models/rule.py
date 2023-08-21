@@ -55,8 +55,13 @@ class Rule(WeChatModel):
         content = dict()
         for key in content_keys:
             content[key] = kwargs.pop(key)
-        kwargs["_content"] = content
+        # kwargs["_content"] = content
         super(Rule, self).__init__(*args, **kwargs)
+
+        if self._content is None:
+            self._content = {}
+
+        self._content.update(content)
 
     def match(self, message_info):
         """

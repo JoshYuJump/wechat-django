@@ -47,15 +47,7 @@ class WeChatOAuthAuthentication(BaseAuthentication):
 
     def _get_params(self, request, key, default=None):
         """获取url上的参数"""
-        if request.is_ajax():
-            try:
-                referrer = request.META["HTTP_REFERER"]
-                query = dict(parse_qsl(urlparse(referrer).query))
-                return query.get(key, default)
-            except:
-                return default
-        else:
-            return request.GET.get(key, default)
+        return request.GET.get(key, default)
 
 
 class WeChatOAuthSessionAuthentication(WeChatOAuthAuthentication):

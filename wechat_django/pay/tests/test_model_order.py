@@ -320,7 +320,7 @@ class OrderTestCase(WeChatPayTestCase):
             body="body",
             # receipt="Y",
             detail="detail",
-            out_trade_no=uuid4(),
+            out_trade_no=str(uuid4()),
             total_fee=101,
             time_start=tz.now(),
             time_expire=tz.now() + tz.timedelta(minutes=30),

@@ -43,7 +43,7 @@ class Menu(WeChatModel):
     type = m.CharField(
         _("type"), max_length=20, choices=enum2choices(Event),
         null=True, blank=True)
-    content = JSONField()
+    content = JSONField(default=dict)
 
     weight = m.IntegerField(_("weight"), default=0, null=False)
     created_at = m.DateTimeField(_("created at"), auto_now_add=True)

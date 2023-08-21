@@ -141,5 +141,9 @@ class OAuthAuthenticationTestCase(WeChatTestCase):
 
     def _create_request(self, path):
         request = self.rf().get(path)
-        SessionMiddleware().process_request(request)
+
+        def dummy_response(*args, **kwargs):
+            pass
+
+        SessionMiddleware(dummy_response).process_request(request)
         return request

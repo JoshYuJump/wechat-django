@@ -138,12 +138,10 @@ class Handler(WeChatView):
 
     def post(self, request, appname):
         message_info = request.wechat
-        signals.message_received.send(request.wechat.app.staticname,
-                                      message_info=message_info)
+        signals.message_received.send(self.__class__, message_info=message_info)
         try:
             reply = self._handle(message_info)
-            signals.message_handled.send(request.wechat.app.staticname,
-                                         message_info=message_info,
+            signals.message_handled.send(self.__class__, message_info=message_info,
                                          reply=reply)
             if reply:
                 xml = reply.render()

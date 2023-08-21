@@ -136,14 +136,14 @@ class WeChatAdminSiteMixin(CustomObjectToolAdminSiteMixin):
             info = model._meta.app_label, model._meta.model_name
             urlpatterns += [
                 url(
-                    r"^%s/(?:(?P<wechat_app_id>\d+)/)?%s/" % info,
+                    r"^%s/wechatapps/(?:(?P<wechat_app_id>\d+)/)?%s/" % info,
                     include(model_admin.urls)
                 ),
             ]
 
         urlpatterns += [
             url(
-                r"(?P<app_label>wechat_django)/apps/(?P<wechat_app_id>\d+)/$",
+                r"(?P<app_label>wechat_django)/wechatapps/(?P<wechat_app_id>\d+)/$",
                 self.admin_view(wechat_admin_view(self.wechat_index, self)),
                 name="wechat_funcs_list"
             )
