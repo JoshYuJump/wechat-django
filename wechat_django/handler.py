@@ -150,7 +150,7 @@ class Handler(WeChatView):
                         xml, request.GET["nonce"], request.GET["timestamp"])
                 return response.HttpResponse(xml, content_type="text/xml")
         except Exception as exc:
-            signals.message_error.send(request.wechat.app.staticname,
+            signals.message_error.send(request.wechat.app,
                                        message_info=message_info, exc=exc)
             raise
         return ""
